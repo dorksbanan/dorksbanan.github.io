@@ -1,0 +1,775 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>晚春楼在线电影 - 热门影视推荐与高清在线观影指南</title>
+    <meta name="description" content="晚春楼在线电影为您提供最新热门电影、经典影片的在线观影信息与推荐指南，涵盖动作、科幻、喜剧、爱情等丰富类型，帮助您快速找到心仪的高清影视内容。">
+    <meta name="keywords" content="晚春楼在线电影,在线电影,高清电影,电影推荐,热门电影,电影在线观看">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+            background-color: #f5f3f0;
+            color: #2c2c2c;
+            line-height: 1.6;
+        }
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+        ul {
+            list-style: none;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        /* 头部 */
+        .site-header {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            padding: 18px 0;
+            border-bottom: 3px solid #e94560;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+        }
+        .header-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .logo-icon {
+            font-size: 28px;
+        }
+        .logo-text {
+            font-size: 26px;
+            font-weight: 700;
+            color: #f5f3f0;
+            letter-spacing: 1px;
+        }
+        .logo-text span {
+            color: #e94560;
+        }
+        .main-nav ul {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+        .main-nav a {
+            color: #cfd8e8;
+            padding: 8px 16px;
+            border-radius: 30px;
+            font-size: 15px;
+            display: block;
+            transition: background 0.3s, color 0.3s;
+        }
+        .main-nav a:hover, .main-nav a.active {
+            background: #e94560;
+            color: #fff;
+        }
+        .search-box {
+            display: flex;
+            align-items: center;
+            background: #fff;
+            border-radius: 30px;
+            overflow: hidden;
+            padding: 4px 4px 4px 16px;
+        }
+        .search-box input {
+            border: none;
+            outline: none;
+            font-size: 14px;
+            width: 180px;
+            padding: 6px 0;
+            background: transparent;
+        }
+        .search-box button {
+            background: #e94560;
+            border: none;
+            color: #fff;
+            padding: 8px 18px;
+            border-radius: 30px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 600;
+        }
+        /* 首屏 Hero */
+        .hero {
+            background: linear-gradient(145deg, #1f1f3a 0%, #2d2d5e 100%);
+            color: #f0f0f0;
+            padding: 50px 0;
+            text-align: center;
+        }
+        .hero h1 {
+            font-size: 38px;
+            font-weight: 800;
+            margin-bottom: 14px;
+            letter-spacing: 1px;
+        }
+        .hero h1 span {
+            color: #ffb347;
+        }
+        .hero p {
+            font-size: 17px;
+            max-width: 700px;
+            margin: 0 auto 30px;
+            color: #cbd0e0;
+        }
+        .hero-tags {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-bottom: 30px;
+        }
+        .hero-tags a {
+            background: rgba(255,255,255,0.1);
+            border: 1px solid rgba(255,255,255,0.2);
+            padding: 6px 18px;
+            border-radius: 30px;
+            font-size: 14px;
+            transition: background 0.3s;
+        }
+        .hero-tags a:hover {
+            background: #e94560;
+            border-color: #e94560;
+        }
+        .hero-btn {
+            display: inline-block;
+            background: #e94560;
+            color: #fff;
+            padding: 12px 32px;
+            border-radius: 40px;
+            font-weight: 700;
+            font-size: 16px;
+            box-shadow: 0 4px 15px rgba(233,69,96,0.4);
+            transition: transform 0.2s;
+        }
+        .hero-btn:hover {
+            transform: translateY(-2px);
+        }
+        /* 通用section */
+        .section {
+            padding: 45px 0;
+        }
+        .section-title {
+            font-size: 26px;
+            font-weight: 700;
+            margin-bottom: 10px;
+            position: relative;
+            padding-left: 18px;
+            color: #1a1a2e;
+        }
+        .section-title::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 5px;
+            width: 6px;
+            height: 24px;
+            background: #e94560;
+            border-radius: 4px;
+        }
+        .section-sub {
+            color: #666;
+            margin-bottom: 28px;
+            font-size: 15px;
+        }
+        .section-bg {
+            background: #fff;
+        }
+        /* 热门电影卡片 */
+        .movie-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 25px;
+        }
+        .movie-card {
+            background: #fff;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 3px 12px rgba(0,0,0,0.06);
+            transition: transform 0.3s, box-shadow 0.3s;
+            border: 1px solid #eee;
+        }
+        .movie-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 12px 24px rgba(0,0,0,0.1);
+        }
+        .movie-poster {
+            height: 260px;
+            background: linear-gradient(145deg, #3a3a5c, #252547);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: rgba(255,255,255,0.3);
+            font-size: 50px;
+            position: relative;
+        }
+        .movie-poster .badge {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background: #e94560;
+            color: #fff;
+            font-size: 12px;
+            padding: 3px 10px;
+            border-radius: 20px;
+            font-weight: 600;
+        }
+        .movie-info {
+            padding: 15px;
+        }
+        .movie-info h3 {
+            font-size: 17px;
+            margin-bottom: 5px;
+            font-weight: 600;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        .movie-meta {
+            display: flex;
+            justify-content: space-between;
+            color: #999;
+            font-size: 13px;
+            margin-bottom: 8px;
+        }
+        .movie-rating {
+            color: #ff9900;
+            font-weight: 700;
+        }
+        .movie-desc {
+            font-size: 13px;
+            color: #777;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            margin-bottom: 10px;
+        }
+        .btn-watch {
+            display: inline-block;
+            background: #16213e;
+            color: #fff;
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 13px;
+            transition: background 0.3s;
+        }
+        .btn-watch:hover {
+            background: #e94560;
+        }
+        /* 分类导航 */
+        .category-nav {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            justify-content: center;
+            margin: 20px 0 10px;
+        }
+        .category-item {
+            background: #f0edf2;
+            padding: 10px 24px;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 15px;
+            border: 1px solid #e0dcd8;
+            transition: all 0.3s;
+        }
+        .category-item:hover {
+            background: #1a1a2e;
+            color: #fff;
+            border-color: #1a1a2e;
+        }
+        /* 更新列表 */
+        .update-list {
+            margin-top: 20px;
+        }
+        .update-item {
+            display: flex;
+            align-items: center;
+            padding: 14px 20px;
+            background: #faf9f7;
+            border-radius: 10px;
+            margin-bottom: 10px;
+            border-left: 4px solid #e94560;
+            transition: background 0.2s;
+        }
+        .update-item:hover {
+            background: #f0edf2;
+        }
+        .update-rank {
+            font-size: 20px;
+            font-weight: 800;
+            color: #e94560;
+            width: 40px;
+            text-align: center;
+        }
+        .update-info {
+            flex: 1;
+            padding: 0 15px;
+        }
+        .update-info h4 {
+            font-size: 16px;
+            font-weight: 600;
+        }
+        .update-info p {
+            font-size: 13px;
+            color: #777;
+        }
+        .update-type {
+            background: #e94560;
+            color: #fff;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        /* 特色区域 */
+        .featured-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-top: 20px;
+        }
+        .featured-box {
+            background: #faf9f7;
+            border-radius: 14px;
+            padding: 30px;
+            border: 1px solid #eae6e2;
+        }
+        .featured-box h3 {
+            font-size: 20px;
+            margin-bottom: 12px;
+            color: #1a1a2e;
+        }
+        .featured-box p {
+            color: #555;
+            font-size: 15px;
+        }
+        .featured-box a {
+            color: #e94560;
+            font-weight: 600;
+        }
+        /* FAQ */
+        .faq-list {
+            margin-top: 20px;
+        }
+        .faq-item {
+            background: #fff;
+            border-radius: 10px;
+            padding: 20px 24px;
+            margin-bottom: 14px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+        }
+        .faq-item h3 {
+            font-size: 17px;
+            margin-bottom: 6px;
+            color: #1a1a2e;
+        }
+        .faq-item p {
+            font-size: 15px;
+            color: #555;
+        }
+        /* 页脚 */
+        .site-footer {
+            background: #1a1a2e;
+            color: #b0b8d0;
+            padding: 40px 0 20px;
+            margin-top: 40px;
+        }
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+        .footer-content h4 {
+            color: #fff;
+            font-size: 18px;
+            margin-bottom: 15px;
+        }
+        .footer-content a {
+            display: block;
+            margin-bottom: 8px;
+            font-size: 14px;
+            opacity: 0.8;
+            transition: opacity 0.2s;
+        }
+        .footer-content a:hover {
+            opacity: 1;
+            color: #ffb347;
+        }
+        .footer-bottom {
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 20px;
+            text-align: center;
+            font-size: 14px;
+        }
+        /* 响应式 */
+        @media (max-width: 768px) {
+            .header-inner {
+                flex-direction: column;
+                gap: 15px;
+            }
+            .search-box {
+                width: 100%;
+            }
+            .search-box input {
+                flex: 1;
+                width: auto;
+            }
+            .hero h1 {
+                font-size: 28px;
+            }
+            .movie-grid {
+                grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+                gap: 15px;
+            }
+            .movie-poster {
+                height: 200px;
+            }
+            .section {
+                padding: 30px 0;
+            }
+            .update-item {
+                flex-wrap: wrap;
+                gap: 8px;
+            }
+            .update-info {
+                padding: 0;
+            }
+        }
+        @media (max-width: 480px) {
+            .container {
+                padding: 0 15px;
+            }
+            .logo-text {
+                font-size: 22px;
+            }
+            .main-nav a {
+                padding: 6px 12px;
+                font-size: 14px;
+            }
+            .hero-tags a {
+                padding: 5px 12px;
+                font-size: 13px;
+            }
+            .movie-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 12px;
+            }
+            .movie-poster {
+                height: 170px;
+            }
+        }
+    </style>
+    <script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+</head>
+<body>
+    <header class="site-header">
+        <div class="container header-inner">
+            <div class="logo-area">
+                <span class="logo-icon">🎬</span>
+                <span class="logo-text">晚春楼<span>电影</span></span>
+            </div>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="#" class="active">首页</a></li>
+                    <li><a href="#">最新电影</a></li>
+                    <li><a href="#">热门榜单</a></li>
+                    <li><a href="#">经典老片</a></li>
+                    <li><a href="#">剧集</a></li>
+                    <li><a href="#">专题</a></li>
+                </ul>
+            </nav>
+            <div class="search-box">
+                <input type="text" placeholder="搜索电影 / 导演 / 演员">
+                <button>搜索</button>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- 首屏 Hero -->
+        <section class="hero">
+            <div class="container">
+                <h1>晚春楼·<span>在线电影</span> 好片不间断</h1>
+                <p>汇集全球热门影片与经典佳作，提供清晰的在线观影信息与专业推荐。无论您偏爱动作大片的震撼、爱情故事的细腻，还是科幻世界的奇想，都能在这里找到心仪之选。</p>
+                <div class="hero-tags">
+                    <a href="#">🔥 本周热播</a>
+                    <a href="#">🎬 高分佳作</a>
+                    <a href="#">✨ 新片速递</a>
+                    <a href="#">🎭 独立电影</a>
+                    <a href="#">📺 口碑剧集</a>
+                </div>
+                <a href="#hot-movies" class="hero-btn">立即探索热门电影</a>
+            </div>
+        </section>
+
+        <!-- 热门电影 -->
+        <section class="section" id="hot-movies">
+            <div class="container">
+                <h2 class="section-title">本周热门电影</h2>
+                <p class="section-sub">根据影迷关注度与评分精选的高热度影片</p>
+                <div class="movie-grid">
+                    <article class="movie-card">
+                        <div class="movie-poster">
+                            <span>🎥</span>
+                            <span class="badge">热播</span>
+                        </div>
+                        <div class="movie-info">
+                            <h3>星际迷航：未知边界</h3>
+                            <div class="movie-meta">
+                                <span>科幻 / 冒险</span>
+                                <span class="movie-rating">★ 8.7</span>
+                            </div>
+                            <p class="movie-desc">一场穿越银河系的壮丽冒险，探索未知文明与自我边界。</p>
+                            <a href="#" class="btn-watch">立即观看</a>
+                        </div>
+                    </article>
+                    <article class="movie-card">
+                        <div class="movie-poster">
+                            <span>🎭</span>
+                            <span class="badge">高分</span>
+                        </div>
+                        <div class="movie-info">
+                            <h3>无声的证词</h3>
+                            <div class="movie-meta">
+                                <span>悬疑 / 剧情</span>
+                                <span class="movie-rating">★ 9.1</span>
+                            </div>
+                            <p class="movie-desc">一桩看似完美的案件背后，隐藏着令人震撼的真相。</p>
+                            <a href="#" class="btn-watch">立即观看</a>
+                        </div>
+                    </article>
+                    <article class="movie-card">
+                        <div class="movie-poster">
+                            <span>💕</span>
+                            <span class="badge">爱情</span>
+                        </div>
+                        <div class="movie-info">
+                            <h3>春日迟迟</h3>
+                            <div class="movie-meta">
+                                <span>爱情 / 文艺</span>
+                                <span class="movie-rating">★ 8.2</span>
+                            </div>
+                            <p class="movie-desc">一段关于等待与重逢的温柔故事，适合静心观赏。</p>
+                            <a href="#" class="btn-watch">立即观看</a>
+                        </div>
+                    </article>
+                    <article class="movie-card">
+                        <div class="movie-poster">
+                            <span>😆</span>
+                            <span class="badge">喜剧</span>
+                        </div>
+                        <div class="movie-info">
+                            <h3>乌龙特工队</h3>
+                            <div class="movie-meta">
+                                <span>喜剧 / 动作</span>
+                                <span class="movie-rating">★ 7.9</span>
+                            </div>
+                            <p class="movie-desc">一群不靠谱的特工，却能笑料百出地拯救世界。</p>
+                            <a href="#" class="btn-watch">立即观看</a>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- 分类浏览 -->
+        <section class="section section-bg">
+            <div class="container">
+                <h2 class="section-title">按类型逛电影</h2>
+                <p class="section-sub">丰富分类，快速定位您喜欢的影视类型</p>
+                <div class="category-nav">
+                    <a href="#" class="category-item">动作</a>
+                    <a href="#" class="category-item">科幻</a>
+                    <a href="#" class="category-item">悬疑</a>
+                    <a href="#" class="category-item">爱情</a>
+                    <a href="#" class="category-item">喜剧</a>
+                    <a href="#" class="category-item">动画</a>
+                    <a href="#" class="category-item">剧情</a>
+                    <a href="#" class="category-item">恐怖</a>
+                    <a href="#" class="category-item">战争</a>
+                    <a href="#" class="category-item">纪录片</a>
+                    <a href="#" class="category-item">犯罪</a>
+                    <a href="#" class="category-item">冒险</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- 最近更新 -->
+        <section class="section">
+            <div class="container">
+                <h2 class="section-title">最近更新</h2>
+                <p class="section-sub">每日精选更新，不错过任何一部好片</p>
+                <div class="update-list">
+                    <div class="update-item">
+                        <span class="update-rank">1</span>
+                        <div class="update-info">
+                            <h4>暗夜追凶 第二季</h4>
+                            <p>更新至第8集 · 犯罪 / 悬疑</p>
+                        </div>
+                        <span class="update-type">连载中</span>
+                    </div>
+                    <div class="update-item">
+                        <span class="update-rank">2</span>
+                        <div class="update-info">
+                            <h4>风起长安</h4>
+                            <p>高清首发 · 古装 / 历史</p>
+                        </div>
+                        <span class="update-type">抢先看</span>
+                    </div>
+                    <div class="update-item">
+                        <span class="update-rank">3</span>
+                        <div class="update-info">
+                            <h4>记忆碎片</h4>
+                            <p>今日上线 · 悬疑 / 心理</p>
+                        </div>
+                        <span class="update-type">新片</span>
+                    </div>
+                    <div class="update-item">
+                        <span class="update-rank">4</span>
+                        <div class="update-info">
+                            <h4>夏日烟火大会</h4>
+                            <p>4K修复版 · 青春 / 治愈</p>
+                        </div>
+                        <span class="update-type">经典</span>
+                    </div>
+                    <div class="update-item">
+                        <span class="update-rank">5</span>
+                        <div class="update-info">
+                            <h4>机械之心</h4>
+                            <p>更新至第6集 · 科幻 / 动作</p>
+                        </div>
+                        <span class="update-type">连载中</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 观影指南与特色 -->
+        <section class="section section-bg">
+            <div class="container">
+                <h2 class="section-title">晚春楼观影指南</h2>
+                <p class="section-sub">从选片到观看，助您获得更好的在线观影体验</p>
+                <div class="featured-grid">
+                    <div class="featured-box">
+                        <h3>🎯 如何挑选好电影</h3>
+                        <p>参考影片评分、导演作品与剧情简介，结合个人兴趣选择。关注影评社区与榜单，能帮助您发现更多冷门佳作。不妨从高分剧情片开始，逐步拓展自己的观影图谱。</p>
+                    </div>
+                    <div class="featured-box">
+                        <h3>📱 多设备观影技巧</h3>
+                        <p>在手机、平板或电脑上均可流畅访问。建议优先选择高清或蓝光资源，并保持网络稳定。使用投屏功能可将影片推送至电视，获得更沉浸的观影感受。</p>
+                    </div>
+                    <div class="featured-box">
+                        <h3>🔒 安全观影提示</h3>
+                        <p>请选择正规渠道与授权平台。对来源不明的播放器或插件保持警惕，不随意下载安装。保护个人账号信息，避免在公共设备上保存密码。</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 专题推荐 -->
+        <section class="section">
+            <div class="container">
+                <h2 class="section-title">编辑精选专题</h2>
+                <p class="section-sub">深度盘点，挖掘影视背后的故事</p>
+                <div class="featured-grid">
+                    <div class="featured-box">
+                        <h3>科幻电影编年史</h3>
+                        <p>从经典《2001太空漫游》到近年来的硬核科幻，梳理科幻电影的发展脉络与思想演变，为您呈现一个充满想象力的光影宇宙。</p>
+                        <a href="#">查看专题 →</a>
+                    </div>
+                    <div class="featured-box">
+                        <h3>华语文艺片之光</h3>
+                        <p>聚焦华语影坛的独特声音，精选具有人文关怀与艺术探索的电影作品，感受东方美学的银幕呈现。</p>
+                        <a href="#">查看专题 →</a>
+                    </div>
+                    <div class="featured-box">
+                        <h3>悬疑烧脑片单</h3>
+                        <p>反转再反转，烧脑不停歇。集合多部高智商悬疑影片，挑战您的推理极限，适合与朋友一起讨论。</p>
+                        <a href="#">查看专题 →</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ -->
+        <section class="section section-bg">
+            <div class="container">
+                <h2 class="section-title">常见问题</h2>
+                <p class="section-sub">关于在线观影，您可能想了解这些</p>
+                <div class="faq-list">
+                    <div class="faq-item">
+                        <h3>晚春楼在线电影是免费的吗？</h3>
+                        <p>我们的平台提供大量免费在线观看的影视内容，同时也会推荐部分需要版权授权的付费资源。具体以每部影片页面的说明为准。</p>
+                    </div>
+                    <div class="faq-item">
+                        <h3>视频清晰度如何？</h3>
+                        <p>大部分热门影片提供高清（720P）及超清（1080P）画质，部分经典影片支持4K修复版。清晰度会根据您的网络状况自动调整，也可以手动选择。</p>
+                    </div>
+                    <div class="faq-item">
+                        <h3>如何获取最新的电影更新通知？</h3>
+                        <p>您可以关注本站「最近更新」栏目，或使用站内收藏功能。我们也会定期发布片单推荐，帮助您掌握最新影视动态。</p>
+                    </div>
+                    <div class="faq-item">
+                        <h3>遇到播放卡顿怎么办？</h3>
+                        <p>建议先检查网络连接，尝试切换清晰度或刷新页面。同时关闭其他占用网速的应用。若问题依旧，可尝试更换浏览器或设备访问。</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div>
+                    <h4>晚春楼电影</h4>
+                    <p style="font-size:14px; opacity:0.8;">致力于为影迷朋友提供优质、便捷的在线观影信息服务与影视推荐。</p>
+                </div>
+                <div>
+                    <h4>快速导航</h4>
+                    <a href="#">最新上架</a>
+                    <a href="#">高分榜单</a>
+                    <a href="#">即将上映</a>
+                    <a href="#">电影专题</a>
+                </div>
+                <div>
+                    <h4>热门类型</h4>
+                    <a href="#">动作大片</a>
+                    <a href="#">科幻冒险</a>
+                    <a href="#">爱情文艺</a>
+                    <a href="#">悬疑惊悚</a>
+                </div>
+                <div>
+                    <h4>帮助支持</h4>
+                    <a href="#">观看帮助</a>
+                    <a href="#">意见反馈</a>
+                    <a href="#">版权声明</a>
+                    <a href="#">联系我们</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2024 晚春楼在线电影 · 本页面仅供信息展示与学习交流，请支持正版影视。</p>
+            </div>
+        </div>
+    </footer>
+</body>
+  </html>
